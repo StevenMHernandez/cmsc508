@@ -1,0 +1,13 @@
+security:
+  oauth2:
+    client:
+      clientId:  <your-client-key-here>
+      clientSecret:  <clientsecret>
+      accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+      userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+      clientAuthenticationScheme: query
+      scope:
+        - https://www.googleapis.com/auth/userinfo.email
+        - https://www.googleapis.com/auth/userinfo.profile
+    resource:
+      userInfoUri: https://www.googleapis.com/userinfo/v2/me
