@@ -46,6 +46,11 @@
 			<artifactId>spring-security-oauth2</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
 		<!-- js -->
 		<dependency>
 			<groupId>org.webjars</groupId>
