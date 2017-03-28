@@ -7,21 +7,71 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width"/>
     <base href="/"/>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bagpakk/css/normalize.css">
+    <link rel="stylesheet" href="/webjars/bagpakk/css/bagpakk.min.css">
+    <link rel="stylesheet" href="/webjars/bagpakk/demo/css/demo.css"> <!-- TODO: remove -->
 </head>
 <body ng-app="app" ng-controller="home as home">
-<h1>CMSC508</h1>
-<div class="container" ng-show="!home.authenticated">
-    Login with: <a href="/login">Google</a>
-</div>
-<div class="container" ng-show="home.authenticated">
-    Logged in as: <span ng-bind="home.user"></span>
-    <div>
-        <button ng-click="home.logout()" class="btn btn-primary">Logout</button>
+
+<header class="container" style="padding: 0 0">
+    <div class="wrap">
+        <div class="col-5">
+            <ul class="inline-list">
+                <li>CMSC 508</li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Classes</a></li>
+            </ul>
+        </div>
+        <div class="col-5 last text-right">
+            <ul class="inline-list">
+                <li ng-show="!home.authenticated"><a href="/login">login</a></li>
+                <li ng-show="home.authenticated">
+                    <span ng-bind="home.user"></span>
+                    <a href="#" ng-click="home.logout()">logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="font-color-alt container" id="homepage-hero">
+    <div class="wrap text-center">
+        <h1 class="big-boy">CMSC 508</h1>
+        <p class="big">Lorem ipsum.</p>
+        <p>
+            <a href="/login"
+               class="button-alt-light-big">Login</a>
+        </p>
     </div>
 </div>
+
+
+<section class="container">
+    <div class="wrap">
+        <article class="small-width">
+            <h2 class="text-center">CMSC 508</h2>
+            <div>
+                <p class="text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed elit
+                    vulputate, mattis purus in, porta elit. Fusce vitae felis sem. Aliquam
+                    vestibulum vulputate mi, sit amet blandit odio feugiat id. Vivamus in finibus
+                    magna, sed porta massa. Duis pulvinar vitae ante ac convallis. Quisque pretium
+                    est a sem blandit, ac placerat ante hendrerit. Fusce a arcu ut tellus fermentum
+                    tincidunt.
+                </p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="container" id="mockup">
+    <div class="wrap">
+        <div style="height:300px;"></div>
+    </div>
+</section>
+
 <script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
 <script type="text/javascript">
     angular.module("app", [])
