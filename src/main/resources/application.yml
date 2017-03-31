@@ -1,0 +1,19 @@
+# This file is the default config used for heroku.
+# If running locally, disregard this. Instead see `Setup` in the readme.
+#
+# You can set environment variables SECURITY_OAUTH2_CLIENT_CLIENTID, SECURITY_OAUTH2_CLIENT_CLIENTSECRET in heroku.
+# @SEE https://devcenter.heroku.com/articles/config-vars
+
+security:
+  oauth2:
+    client:
+      clientId:  ${SECURITY_OAUTH2_CLIENT_CLIENTID}
+      clientSecret:  ${SECURITY_OAUTH2_CLIENT_CLIENTSECRET}
+      accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+      userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+      clientAuthenticationScheme: query
+      scope:
+        - https://www.googleapis.com/auth/userinfo.email
+        - https://www.googleapis.com/auth/userinfo.profile
+    resource:
+      userInfoUri: https://www.googleapis.com/userinfo/v2/me
