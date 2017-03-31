@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>CMSC508</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bagpakk/css/normalize.css"/>
+    <link rel="stylesheet" href="/webjars/bagpakk/css/bagpakk.min.css"/>
+    <link rel="stylesheet" href="/webjars/bagpakk/demo/css/demo.css"/>
+</head>
+<body>
+
+<header class="container" style="padding: 0 0">
+    <div class="wrap">
+        <div class="col-5">
+            <ul class="inline-list">
+                <li>CMSC 508</li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Classes</a></li>
+            </ul>
+        </div>
+        <div class="col-5 last text-right">
+            <ul class="inline-list">
+                <li ng-show="!home.authenticated"><a href="/login">login</a></li>
+                <li ng-show="home.authenticated">
+                    <span ng-bind="home.user"></span>
+                    <a href="#" ng-click="home.logout()">logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section class="container">
+    <div class="wrap">
+        <article class="small-width">
+            <h2 class="text-center">Add Course</h2>
+            <div>
+                <select name="course" id="course">
+                    <option value="" disabled="true" selected="true">Select a class</option>
+                    <option value="0">CMSC 508</option>
+                    <option value="1">CMSC 101</option>
+                </select>
+                <a href="#" class="button">Add</a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="container">
+    <div class="wrap">
+        <table>
+            <thead>
+            <tr>
+                <th>Department</th>
+                <th>Course Number</th>
+            </tr>
+            </thead>
+            <tr>
+                <td>CMSC</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>CMSC</td>
+                <td>234</td>
+            </tr>
+        </table>
+    </div>
+</section>
+</body>
+</html>

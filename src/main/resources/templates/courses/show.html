@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>CMSC508</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bagpakk/css/normalize.css"/>
+    <link rel="stylesheet" href="/webjars/bagpakk/css/bagpakk.min.css"/>
+    <link rel="stylesheet" href="/webjars/bagpakk/demo/css/demo.css"/>
+</head>
+<body>
+
+<header class="container" style="padding: 0 0">
+    <div class="wrap">
+        <div class="col-5">
+            <ul class="inline-list">
+                <li>CMSC 508</li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Classes</a></li>
+            </ul>
+        </div>
+        <div class="col-5 last text-right">
+            <ul class="inline-list">
+                <li ng-show="!home.authenticated"><a href="/login">login</a></li>
+                <li ng-show="home.authenticated">
+                    <span ng-bind="home.user"></span>
+                    <a href="#" ng-click="home.logout()">logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section class="container">
+    <div class="wrap">
+        <h1 class="text-center">
+            <small>Course</small>
+            CMSC 123
+        </h1>
+    </div>
+</section>
+<section class="container">
+    <div class="wrap">
+        <h2>Student Projects</h2>
+
+        <p>Projects that students currently enrolled in this course have worked on.</p>
+
+        <div class="col-4 first">
+            <article class="small-width">
+                <h3>Example Project</h3>
+                <p>Truncated project description</p>
+            </article>
+        </div>
+
+        <div class="col-4 first">
+            <article class="small-width">
+                <h3>Another Project</h3>
+                <p>Simple project which. . .</p>
+            </article>
+        </div>
+
+        <div class="col-4 first">
+            <article class="small-width">
+                <h3>Project Three</h3>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </article>
+        </div>
+    </div>
+</section>
+<section class="container">
+    <div class="wrap">
+        <h2>Students</h2>
+
+        <p>Students currently enrolled in this class.</p>
+
+        <div class="col-2 first">
+            <a href="/students/1">
+                <img src="http://placehold.it/200"/>
+                <span>Steven Hernandez</span>
+            </a>
+        </div>
+
+        <div class="col-2 first">
+            <a href="/students/1">
+                <img src="http://placehold.it/200"/>
+                <span>Student Name</span>
+            </a>
+        </div>
+
+        <div class="col-2 first">
+            <a href="/students/1">
+                <img src="http://placehold.it/200"/>
+                <span>Student Name</span>
+            </a>
+        </div>
+
+        <div class="col-2 first">
+            <a href="/students/1">
+                <img src="http://placehold.it/200"/>
+                <span>Student Name</span>
+            </a>
+        </div>
+
+        <div class="col-2 first">
+            <a href="/students/1">
+                <img src="http://placehold.it/200"/>
+                <span>Student Name</span>
+            </a>
+        </div>
+
+        <div class="col-2 first">
+            <a href="/students/1">
+                <img src="http://placehold.it/200"/>
+                <span>Student Name</span>
+            </a>
+        </div>
+
+        <div class="col-2 first">
+            <a href="/students/1">
+                <img src="http://placehold.it/200"/>
+                <span>Student Name</span>
+            </a>
+        </div>
+    </div>
+</section>
+</body>
+</html>

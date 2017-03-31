@@ -1,36 +1,36 @@
 package com.cmsc508.controller;
 
-import com.cmsc508.model.Project;
-
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.Date;
-
 @Controller
+@EnableWebSecurity
 public class ProjectController {
-    @RequestMapping(value="/student/{student_id}/projects", method=RequestMethod.GET)
-    public String index(@PathVariable Integer student_id, Model model) {
-        // get all projects for student
-        model.addAttribute("id", student_id);
-        return "students/projects/index";
+    @RequestMapping(value="/projects/create", method=RequestMethod.GET)
+    public String create(Model model) {
+        return "students/projects/create";
     }
 
-    @RequestMapping(value="/student/{student_id}/projects/{project_id}", method=RequestMethod.GET)
-    public String show(@PathVariable Integer student_id, @PathVariable Integer project_id, Model model) {
-        // get project data with comments and stars
-        Project project = new Project(new Date(), project_id, student_id, "My Project Name abc", "Description", new Date());
-        model.addAttribute("project", project);
-        return "students/projects/show";
+    @RequestMapping(value="/projects", method=RequestMethod.POST)
+    public String store(Model model) {
+        // store values
+        return "redirect";
     }
 
-    @RequestMapping(value="/student/{student_id}/projects/{project_id}/comment", method=RequestMethod.POST)
-    public String comment(@PathVariable Integer student_id, @PathVariable Integer project_id, Model model) {
-        // store comment for student
-        // redirect to show
+    @RequestMapping(value="/projects/{project_id}/edit", method=RequestMethod.GET)
+    public String edit(@PathVariable Integer project_id, Model model) {
+        // make sure user can update this project
+        return "students/projects/create";
+    }
+
+    @RequestMapping(value="/projects/{project_id}", method=RequestMethod.POST)
+    public String update(@PathVariable Integer project_id, Model model) {
+        // make sure user can update this project
+        // update values
         return "redirect";
     }
 }
