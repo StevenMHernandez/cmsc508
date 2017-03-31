@@ -22,7 +22,7 @@ public class StudentProjectController {
     @RequestMapping(value="/student/{student_id}/projects/{project_id}", method=RequestMethod.GET)
     public String show(@PathVariable Integer student_id, @PathVariable Integer project_id, Model model) {
         // get project data with comments and stars
-        Project project = new Project(new Date(), project_id, student_id, "My Project Name abc", "Description", new Date());
+        Project project = new Project(new Date(), project_id, student_id, "My Project Name abc", "Simple description goes here.", new Date());
         model.addAttribute("project", project);
         return "students/projects/show";
     }
