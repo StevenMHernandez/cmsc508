@@ -1,3 +1,11 @@
+# This is the primary yml config file. Make changes here.
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://<url>/<database>
+    username: <user>
+    password: <pass>
 security:
   oauth2:
     client:

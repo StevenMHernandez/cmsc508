@@ -35,7 +35,6 @@ public class SimpleApplication extends WebSecurityConfigurerAdapter {
 				.authenticated()
 				.and().logout().logoutSuccessUrl("/").permitAll()
 				.and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-		;
 	}
 
 }

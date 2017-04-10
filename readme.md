@@ -2,7 +2,7 @@
 
 ## Setup
 
-Copy `config/application.yml.example` to `config/application.yml`. Update this `application.yml` file with google api credentials.
+Copy `config/application.yml.example` to `config/application.yml`. Update this `application.yml` file with google api credentials and mysql credentials.
 See the google drive for the api credentials.
 
 Run in IntelliJ.
