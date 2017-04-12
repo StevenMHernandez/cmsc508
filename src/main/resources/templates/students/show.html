@@ -1,1 +1,45 @@
-student_show
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>CMSC508</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bagpakk/css/normalize.css"/>
+    <link rel="stylesheet" href="/webjars/bagpakk/css/bagpakk.min.css"/>
+    <link rel="stylesheet" href="/webjars/bagpakk/demo/css/demo.css"/>
+</head>
+<body>
+
+<header class="container" style="padding: 0 0">
+    <div class="wrap">
+        <div class="col-5">
+            <ul class="inline-list">
+                <li><a href="/">CMSC 508</a></li>
+                <li><a href="/student/1/projects/1">Projects</a></li>
+                <li><a href="/courses/1">Classes</a></li>
+            </ul>
+        </div>
+        <div class="col-5 last text-right">
+            <ul class="inline-list">
+                <li ng-show="!home.authenticated"><a href="/login">login</a></li>
+                <li ng-show="home.authenticated">
+                    <span ng-bind="home.user"></span>
+                    <a href="#" ng-click="home.logout()">logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section class="container">
+    <div class="wrap">
+        <h2 th:text="${student.name}"/>
+    </div>
+</section>
+</body>
+</html>
