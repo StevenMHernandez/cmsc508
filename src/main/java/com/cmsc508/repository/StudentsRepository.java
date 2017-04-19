@@ -13,10 +13,14 @@ public class StudentsRepository extends BaseRepository {
     }
 
     public Student find(Integer id) {
-        return jdbcTemplate.queryForObject("select * from students where id = ?", new Object[] { id }, new StudentRowMapper());
+        return jdbcTemplate.queryForObject("select * from students where id = ?", new Object[]{id}, new StudentRowMapper());
     }
 
     public List<Student> findAll() {
         return jdbcTemplate.query("select * from students", new StudentRowMapper());
+    }
+
+    public void createOrUpdate(Student student) {
+        jdbcTemplate.update("insert into students (oauth_user_id, name, email) values (?,?,?) on DUPLICATE key update name=values(name), email=values(email);", student.getOauthUserId(), student.getName(), student.getEmail());
     }
 }
