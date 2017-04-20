@@ -1,25 +1,18 @@
 package com.cmsc508.model;
 
-public class Student {
-    private final long id;
-    private final String name;
-    private final String email;
-    private final String oauthUserId;
-    private final String shortDescription;
-    private final String githubUrl;
-    private final String linkedinUrl;
-    private final String websiteUrl;
+import java.sql.Date;
 
-    public Student(String email, long id, String name, String oauthUserId, String shortDescription, String githubUrl, String linkedinUrl, String websiteUrl) {
-        this.email = email;
-        this.id = id;
-        this.name = name;
-        this.oauthUserId = oauthUserId;
-        this.shortDescription = shortDescription;
-        this.githubUrl = githubUrl;
-        this.linkedinUrl = linkedinUrl;
-        this.websiteUrl = websiteUrl;
-    }
+public class Student {
+    private long id;
+    private String name;
+    private String email;
+    private String oauthUserId;
+    private String shortDescription;
+    private String githubUrl;
+    private String linkedinUrl;
+    private String websiteUrl;
+    private Date createdAt;
+    private Date updatedAt;
 
     public String getEmail() {
         return email;
@@ -51,5 +44,45 @@ public class Student {
 
     public String getWebsiteUrl() {
         return websiteUrl;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setGithubUrl(String githubUrl) {
+        this.githubUrl = githubUrl;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setLinkedinUrl(String linkedinUrl) {
+        this.linkedinUrl = linkedinUrl;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setOauthUserId(String oauthUserId) {
+        this.oauthUserId = oauthUserId;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public void setWebsiteUrl(String websiteUrl) {
+        this.websiteUrl = websiteUrl;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

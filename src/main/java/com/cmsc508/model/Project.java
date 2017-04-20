@@ -3,21 +3,12 @@ package com.cmsc508.model;
 import java.util.Date;
 
 public class Project {
-    private final long id;
-    private final long studentId;
-    private final String name;
-    private final String description;
-    private final Date createdAt;
-    private final Date updatedAt;
-
-    public Project(Date createdAt, long id, long studentId, String name, String description, Date updatedAt) {
-        this.createdAt = createdAt;
-        this.id = id;
-        this.studentId = studentId;
-        this.name = name;
-        this.description = description;
-        this.updatedAt = updatedAt;
-    }
+    private long id;
+    private long studentId;
+    private String name;
+    private String description;
+    private Date createdAt;
+    private Date updatedAt;
 
     public Date getCreatedAt() {
         return createdAt;
@@ -41,5 +32,29 @@ public class Project {
 
     public Date getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

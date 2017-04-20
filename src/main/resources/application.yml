@@ -4,6 +4,12 @@
 # You can set environment variables SECURITY_OAUTH2_CLIENT_CLIENTID, SECURITY_OAUTH2_CLIENT_CLIENTSECRET in heroku.
 # @SEE https://devcenter.heroku.com/articles/config-vars
 
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
 security:
   oauth2:
     client:
