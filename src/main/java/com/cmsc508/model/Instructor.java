@@ -6,7 +6,7 @@ package com.cmsc508.model;
 public class Instructor {
 
     private long id;
-    private long instructorName;
+    private String instructorName;
 
     public long getId() {
         return id;
@@ -16,11 +16,11 @@ public class Instructor {
         this.id = id;
     }
 
-    public long getInstructorName() {
+    public String getInstructorName() {
         return instructorName;
     }
 
-    public void setInstructorName(long instructorName) {
+    public void setInstructorName(String instructorName) {
         this.instructorName = instructorName;
     }
 

@@ -7,6 +7,7 @@ public class EnrolledActivity {
 
     private long id;
     private long courseId;
+    private long studentId;
 
     public long getId() {
         return id;
@@ -22,6 +23,14 @@ public class EnrolledActivity {
 
     public void setCourseId(long courseId) {
         this.courseId = courseId;
+    }
+
+    public long getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
     }
 
 }
