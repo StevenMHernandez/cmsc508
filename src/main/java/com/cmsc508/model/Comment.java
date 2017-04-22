@@ -1,15 +1,18 @@
 package com.cmsc508.model;
 
+import java.util.Date;
+
 /**
  * Created by Pulkit on 4/15/2017.
  */
 public class Comment {
-
     private long id;
     private long studentId;
     private long type;
     private long targetId;
     private String body;
+    private Date createdAt;
+    private Date updatedAt;
 
     public long getId() {
         return id;
@@ -49,5 +52,21 @@ public class Comment {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
