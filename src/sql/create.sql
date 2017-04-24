@@ -128,10 +128,11 @@ CREATE TABLE activities (
 );
 
 CREATE TABLE activity_feed_items (
+  id INT(10) NOT NULL AUTO_INCREMENT,
   studentId INT(10) NOT NULL,
   activityId INT(10) NOT NULL,
 
-  PRIMARY KEY (studentId, activityId),
+  PRIMARY KEY (id),
   FOREIGN KEY (studentId) REFERENCES students(id),
   FOREIGN KEY (activityId) REFERENCES activities(id)
 );

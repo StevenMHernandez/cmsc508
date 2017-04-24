@@ -39,7 +39,7 @@ CREATE TRIGGER add_enrolled_activity AFTER INSERT ON course_student
     INSERT INTO enrolled_activities (id, studentId, courseId) VALUES (LAST_INSERT_ID(), NEW.studentId, NEW.courseId);
     -- `broadcast` the activity out to relevant activity_feeds
     INSERT INTO activity_feed_items (studentId, activityId) (
-    	SELECT id, LAST_INSERT_ID() FROM students s, course_student cs
+    	SELECT s.id, LAST_INSERT_ID() FROM students s, course_student cs
 		  WHERE s.id = cs.studentId
   		AND s.id != NEW.studentId
     );
@@ -58,7 +58,7 @@ CREATE TRIGGER add_project_added_activity AFTER INSERT ON projects
     INSERT INTO project_added_activities (id, projectId) VALUES (LAST_INSERT_ID(), NEW.id);
     -- `broadcast` the activity out to relevant activity_feeds
     INSERT INTO activity_feed_items (studentId, activityId) (
-    	SELECT id, LAST_INSERT_ID() FROM students s, course_student cs
+    	SELECT s.id, LAST_INSERT_ID() FROM students s, course_student cs
 		  WHERE s.id = cs.studentId
   		AND s.id != NEW.studentId
     );
@@ -77,7 +77,7 @@ CREATE TRIGGER add_project_updated_activity AFTER UPDATE ON projects
     INSERT INTO project_added_activities (id, projectId) VALUES (LAST_INSERT_ID(), NEW.id);
     -- `broadcast` the activity out to relevant activity_feeds
     INSERT INTO activity_feed_items (studentId, activityId) (
-    	SELECT id, LAST_INSERT_ID() FROM students s, course_student cs
+    	SELECT s.id, LAST_INSERT_ID() FROM students s, course_student cs
 		  WHERE s.id = cs.studentId
   		AND s.id != NEW.studentId
     );
