@@ -13,6 +13,14 @@ public class ProjectsRepository extends BaseRepository {
     }
 
     public List<Project> findAll() {
-        return jdbcTemplate.query("select * from project", new ProjectRowMapper());
+        return jdbcTemplate.query("select * from projects", new ProjectRowMapper());
+    }
+
+    public List<Project> findAllForStudent(Integer student_id) {
+        return jdbcTemplate.query("select * from projects where studentId = ?", new ProjectRowMapper(), student_id);
+    }
+
+    public void insert(Project project) {
+        jdbcTemplate.update("insert into projects (name, description, studentId) VALUES (?,?, ?)", new Object[]{project.getName(), project.getDescription(), project.getStudentId()});
     }
 }

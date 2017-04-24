@@ -1,5 +1,9 @@
 package com.cmsc508.controller;
 
+import com.cmsc508.model.Project;
+import com.cmsc508.repository.ProjectsRepository;
+
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,16 +13,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @EnableWebSecurity
-public class ProjectController {
+public class ProjectController extends BaseController {
     @RequestMapping(value="/projects/create", method=RequestMethod.GET)
     public String create(Model model) {
         return "students/projects/create";
     }
 
-    @RequestMapping(value="/projects", method=RequestMethod.POST)
-    public String store(Model model) {
-        // store values
-        return "redirect";
+    @RequestMapping(value="/projects", method=RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String store(Model model, String name, String description) {
+        Project project = new Project();
+        project.setStudentId(this.getStudent().getId());
+        project.setName(name);
+        project.setDescription(description);
+
+        new ProjectsRepository(this.jdbcTemplate).insert(project);
+        return "redirect:/student/" + this.getStudent().getId() + "/projects";
     }
 
     @RequestMapping(value="/projects/{project_id}/edit", method=RequestMethod.GET)

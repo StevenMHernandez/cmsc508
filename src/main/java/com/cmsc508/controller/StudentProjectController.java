@@ -3,8 +3,6 @@ package com.cmsc508.controller;
 import com.cmsc508.model.Project;
 import com.cmsc508.repository.ProjectsRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,17 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-public class StudentProjectController {
-    @Autowired
-    JdbcTemplate jdbcTemplate;
-
+public class StudentProjectController extends BaseController {
     @RequestMapping(value="/student/{student_id}/projects", method=RequestMethod.GET)
     public String index(@PathVariable Integer student_id, Model model) {
-        // get all projects for student
-        ProjectsRepository repo = new ProjectsRepository(this.jdbcTemplate);
-        List<Project> list = repo.findAll();
+        List<Project> projects = new ProjectsRepository(this.jdbcTemplate).findAllForStudent(student_id);
 
-        model.addAttribute("projects", list);
+        model.addAttribute("student", this.getStudent());
+        model.addAttribute("projects", projects);
 
         return "students/projects/index";
     }
