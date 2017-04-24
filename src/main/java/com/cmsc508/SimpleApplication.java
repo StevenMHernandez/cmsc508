@@ -66,9 +66,6 @@ public class SimpleApplication extends WebSecurityConfigurerAdapter {
 
 	@RequestMapping("/user")
 	public Principal user(Principal principal) {
-		System.out.println("user");
-		System.out.println(principal);
-		System.out.println(principal.getName());
 		return principal;
 	}
 
@@ -103,9 +100,7 @@ public class SimpleApplication extends WebSecurityConfigurerAdapter {
             student.setName((String) map.get("name"));
             student.setOauthUserId((String) map.get("id"));
 
-            (new StudentsRepository(jdbcTemplate)).createOrUpdate(student);
-
-            return student;
+            return (new StudentsRepository(jdbcTemplate)).createOrUpdate(student);
         });
 		googleFilter.setTokenServices(tokenServices);
 		googleFilter.setAuthenticationSuccessHandler(oAuthAuthenticationSuccessHandler);

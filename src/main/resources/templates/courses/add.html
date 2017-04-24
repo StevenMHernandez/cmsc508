@@ -40,14 +40,16 @@
     <div class="wrap">
         <article class="small-width">
             <h2 class="text-center">Add Course</h2>
-            <div>
-                <select name="course" id="course">
+            <form action="/courses/add" method="POST">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <select name="courseId" id="courseId">
                     <option value="" disabled="true" selected="true">Select a class</option>
-                    <option value="0">CMSC 508</option>
-                    <option value="1">CMSC 101</option>
+                    <option th:each="course : ${otherCourses}"
+                            th:value="${course.id}"
+                            th:text="${course.departmentId} + ' ' + ${course.courseNumber}"></option>
                 </select>
-                <a href="#" class="button">Add</a>
-            </div>
+                <button class="button" type="submit">Add</button>
+            </form>
         </article>
     </div>
 </section>
@@ -57,17 +59,11 @@
         <table>
             <thead>
             <tr>
-                <th>Department</th>
-                <th>Course Number</th>
+                <th>Your Courses</th>
             </tr>
             </thead>
-            <tr>
-                <td>CMSC</td>
-                <td>123</td>
-            </tr>
-            <tr>
-                <td>CMSC</td>
-                <td>234</td>
+            <tr data-th-each="course : ${studentCourses}">
+                <td data-th-text="${course.departmentId} + ' ' + ${course.courseNumber}"></td>
             </tr>
         </table>
     </div>
