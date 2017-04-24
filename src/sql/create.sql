@@ -68,11 +68,12 @@ CREATE TABLE course_available (
 );
 
 CREATE TABLE course_student (
+  id INT(10) NOT NULL AUTO_INCREMENT,
   courseId INT(10) NOT NULL,
   studentId INT(10) NOT NULL,
   semester ENUM('Fall', 'Spring', 'Summer') NOT NULL,
 
-  PRIMARY KEY (courseId, studentId),
+  PRIMARY KEY (id),
   FOREIGN KEY (courseId) REFERENCES courses(id),
   FOREIGN KEY (studentId) REFERENCES students(id)
 );
