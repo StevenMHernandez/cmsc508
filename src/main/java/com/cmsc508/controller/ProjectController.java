@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @EnableWebSecurity
 public class ProjectController extends BaseController {
+    @RequestMapping(value="/projects", method=RequestMethod.GET)
+    public String index(Model model) {
+        return "redirect:/student/" + this.getStudent().getId() + "/projects";
+    }
+
     @RequestMapping(value="/projects/create", method=RequestMethod.GET)
     public String create(Model model) {
         return "students/projects/create";

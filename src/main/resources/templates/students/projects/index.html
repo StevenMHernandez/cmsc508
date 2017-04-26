@@ -20,7 +20,7 @@
         <div class="col-5">
             <ul class="inline-list">
                 <li><a href="/">CMSC 508</a></li>
-                <li><a href="/student/1/projects/1">Projects</a></li>
+                <li><a href="/projects">Projects</a></li>
                 <li><a href="/courses/add">Classes</a></li>
             </ul>
         </div>
@@ -49,7 +49,7 @@
 
         <div class="col-4 first" th:each="project : ${projects}">
             <article class="small-width">
-                <h3><a th:href="'/student/1/projects/' + ${project.id}" th:text="${project.name}">Example Project</a></h3>
+                <h3><a th:href="'/student/' + ${project.studentId} + '/projects/' + ${project.id}" th:text="${project.name}">Example Project</a></h3>
                 <p th:text="${project.description}"></p>
             </article>
         </div>
