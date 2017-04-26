@@ -38,17 +38,22 @@
 
 <section class="container">
     <div class="wrap">
-        <article class="small-width">
-            <h2 th:text="${project.name}"/>
+        <form th:action="@{'/projects/' + ${project.id}}" method="POST" class="small-width">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
-            <div th:switch="${user.id}">
-                <p th:case="${project.studentId}">
-                    <a th:href="@{'/projects/' + ${project.id} + '/edit'}">Edit</a>
-                </p>
-            </div>
-
-            <p th:text="${project.description}"/>
-        </article>
+            <h2 class="text-center">Add Project</h2>
+            <p>
+                <label for="name">Title</label>
+                <input id="name" name="name" type="text" th:value="${project.name}"/>
+            </p>
+            <p>
+                <label for="description">Description</label>
+                <textarea name="description" id="description" cols="30" rows="10" th:text="${project.description}"></textarea>
+            </p>
+            <p>
+                <input type="submit" value="Add"/>
+            </p>
+        </form>
     </div>
 </section>
 </body>

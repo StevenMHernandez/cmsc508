@@ -26,11 +26,11 @@ public class StudentProjectController extends BaseController {
     @RequestMapping(value="/student/{student_id}/projects/{project_id}", method=RequestMethod.GET)
     public String show(@PathVariable Integer student_id, @PathVariable Integer project_id, Model model) {
         // get project data with comments and stars
-        Project project = new Project();
-        project.setName("My Project Name here");
-        project.setDescription("A simple description.");
+        Project project = new ProjectsRepository(this.jdbcTemplate).get(project_id, student_id);
 
         model.addAttribute("project", project);
+        model.addAttribute("user", this.getStudent());
+
         return "students/projects/show";
     }
 

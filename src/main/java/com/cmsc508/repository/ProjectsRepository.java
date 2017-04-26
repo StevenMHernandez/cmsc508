@@ -21,6 +21,20 @@ public class ProjectsRepository extends BaseRepository {
     }
 
     public void insert(Project project) {
-        jdbcTemplate.update("insert into projects (name, description, studentId) VALUES (?,?, ?)", new Object[]{project.getName(), project.getDescription(), project.getStudentId()});
+        jdbcTemplate.update("insert into projects (name, description, studentId) VALUES (?,?,?)", new Object[]{project.getName(), project.getDescription(), project.getStudentId()});
+    }
+
+    public void update(Project project) {
+        jdbcTemplate.update("update projects SET name=?, description=? WHERE id = ? AND studentId = ?", new Object[]{project.getName(), project.getDescription(), project.getId(), project.getStudentId()});
+    }
+
+    public Project get(Integer project_id, long student_id) {
+        List<Project> projects = jdbcTemplate.query("select * from projects where id = ? and studentId = ?", new ProjectRowMapper(), project_id, student_id);
+
+        if (projects.isEmpty()) {
+            return null;
+        }
+
+        return projects.get(0);
     }
 }

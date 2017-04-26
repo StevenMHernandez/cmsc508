@@ -33,13 +33,27 @@ public class ProjectController extends BaseController {
     @RequestMapping(value="/projects/{project_id}/edit", method=RequestMethod.GET)
     public String edit(@PathVariable Integer project_id, Model model) {
         // make sure user can update this project
-        return "students/projects/create";
+        Project project = new ProjectsRepository(this.jdbcTemplate).get(project_id, this.getStudent().getId());
+
+        if (project == null) {
+            // throw exception
+            return "redirect:/student/" + this.getStudent().getId() + "/projects";
+        }
+
+        model.addAttribute("project", project);
+
+        return "students/projects/edit";
     }
 
-    @RequestMapping(value="/projects/{project_id}", method=RequestMethod.POST)
-    public String update(@PathVariable Integer project_id, Model model) {
-        // make sure user can update this project
-        // update values
-        return "redirect";
+    @RequestMapping(value="/projects/{project_id}", method=RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String update(@PathVariable Integer project_id, Model model, String name, String description) {
+        Project project = new Project();
+        project.setId(project_id);
+        project.setStudentId(this.getStudent().getId());
+        project.setName(name);
+        project.setDescription(description);
+
+        new ProjectsRepository(this.jdbcTemplate).update(project);
+        return "redirect:/student/" + this.getStudent().getId() + "/projects";
     }
 }
