@@ -74,13 +74,13 @@ CREATE TRIGGER add_project_updated_activity AFTER UPDATE ON projects
   	-- add an activity for this event
     INSERT INTO activities (type, studentId, created_at, updated_at) VALUES ("project_updated", NEW.studentId, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
     -- add the activity details for this event
-    INSERT INTO project_added_activities (id, projectId) VALUES (LAST_INSERT_ID(), NEW.id);
+    INSERT INTO project_updated_activities (id, projectId) VALUES (LAST_INSERT_ID(), NEW.id);
     -- `broadcast` the activity out to relevant activity_feeds
     INSERT INTO activity_feed_items (studentId, activityId) (
     	SELECT s.id, LAST_INSERT_ID() FROM students s, course_student cs
 		  WHERE s.id = cs.studentId
   		AND s.id != NEW.studentId
     );
-  END;
+  END
 /
 delimiter ;

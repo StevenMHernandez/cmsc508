@@ -39,7 +39,40 @@
 
 <section class="container">
     <div class="wrap">
-        <h2 th:text="${student.name}"/>
+        <h1 class="text-center">
+            Most Recent Activities from your Classmates
+        </h1>
+    </div>
+</section>
+<section class="container">
+    <div class="wrap">
+        <p class="" th:each="activity : ${activities}">
+            <article class="small-width">
+                <div th:text="${#dates.format(activity.createdAt, 'MMM dd, yyyy')}"></div>
+                <a th:href="'/student/' + ${activity.studentId}" th:text="${activity.studentName}"></a>
+
+                <span th:switch="${activity.type}">
+                    <span th:case="enrolled">
+                        enrolled in one of your courses.
+
+                        <a th:href="'/courses/' + ${activity.targetId}">View the course</a>
+                    </span>
+                    <span th:case="project_added">
+                        added a new project.
+
+                        <a th:href="'/student/' + ${activity.studentId} + '/project/' + ${activity.targetId}">View the project</a>
+                    </span>
+                    <span th:case="project_updated">
+                        updated one of their projects.
+
+                        <a th:href="'/student/' + ${activity.studentId} + '/project/' + ${activity.targetId}">View the project</a>
+                    </span>
+                    <span th:case="comment">
+                        left you a comment.
+                    </span>
+                </span>
+            </article>
+        </p>
     </div>
 </section>
 </body>

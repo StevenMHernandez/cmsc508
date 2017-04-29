@@ -11,6 +11,8 @@ public class Activity {
     private String type;
     private Date createdAt;
     private Date updatedAt;
+    private String studentName;
+    private int targetId;
 
     public long getId() {
         return id;
@@ -50,5 +52,21 @@ public class Activity {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public void setTargetId(int targetId) {
+        this.targetId = targetId;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public int getTargetId() {
+        return targetId;
     }
 }
