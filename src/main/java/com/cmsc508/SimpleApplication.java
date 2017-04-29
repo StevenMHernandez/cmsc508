@@ -81,6 +81,7 @@ public class SimpleApplication extends WebSecurityConfigurerAdapter {
 				.permitAll()
 				.anyRequest()
 				.authenticated()
+				.and().formLogin().loginPage("/login")
 				.and().logout().logoutSuccessUrl("/").permitAll()
 				.and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 				.and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class)
