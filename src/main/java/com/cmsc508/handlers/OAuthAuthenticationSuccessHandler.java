@@ -19,6 +19,6 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
         response.setStatus(HttpServletResponse.SC_OK);
 
         // redirect the user after successfully login
-        response.sendRedirect("/");
+        response.sendRedirect("/activity-feed");
     }
 }

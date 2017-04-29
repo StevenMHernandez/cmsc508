@@ -27,11 +27,10 @@
         </div>
         <div class="col-5 last text-right">
             <ul class="inline-list">
-                <li ng-show="!home.authenticated"><a href="/login">login</a></li>
-                <li ng-show="home.authenticated">
-                    <span ng-bind="home.user"></span>
-                    <a href="#" ng-click="home.logout()">logout</a>
-                </li>
+                <form action="/logout" method="POST">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <button type="submit">Logout</button>
+                </form>
             </ul>
         </div>
     </div>
@@ -49,7 +48,7 @@
         <p class="" th:each="activity : ${activities}">
             <article class="small-width">
                 <div th:text="${#dates.format(activity.createdAt, 'MMM dd, yyyy')}"></div>
-                <a th:href="'/student/' + ${activity.studentId}" th:text="${activity.studentName}"></a>
+                <a th:href="'/students/' + ${activity.studentId}" th:text="${activity.studentName}"></a>
 
                 <span th:switch="${activity.type}">
                     <span th:case="enrolled">
@@ -60,12 +59,12 @@
                     <span th:case="project_added">
                         added a new project.
 
-                        <a th:href="'/student/' + ${activity.studentId} + '/project/' + ${activity.targetId}">View the project</a>
+                        <a th:href="'/student/' + ${activity.studentId} + '/projects/' + ${activity.targetId}">View the project</a>
                     </span>
                     <span th:case="project_updated">
                         updated one of their projects.
 
-                        <a th:href="'/student/' + ${activity.studentId} + '/project/' + ${activity.targetId}">View the project</a>
+                        <a th:href="'/student/' + ${activity.studentId} + '/projects/' + ${activity.targetId}">View the project</a>
                     </span>
                     <span th:case="comment">
                         left you a comment.
