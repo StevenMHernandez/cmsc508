@@ -25,6 +25,6 @@ public class CoursesRepository extends BaseRepository {
     }
 
     public List<Course> findNonStudentCourses(Long studentId) {
-        return jdbcTemplate.query("select c.* from courses c, course_student cs where c.id = cs.courseId and c.id NOT IN (select courseId from course_student where studentId = ?)", new Object[]{studentId}, new CourseRowMapper());
+        return jdbcTemplate.query("select * from courses where id NOT IN (select courseId from course_student where studentId = ?)", new Object[]{studentId}, new CourseRowMapper());
     }
 }
