@@ -84,3 +84,13 @@ CREATE TRIGGER add_project_updated_activity AFTER UPDATE ON projects
   END
 /
 delimiter ;
+-- project_deleted_activity
+DROP TRIGGER IF EXISTS add_project_updated_activity;
+delimiter /
+CREATE TRIGGER add_project_updated_activity BEFORE DELETE ON projects
+  FOR EACH ROW
+  BEGIN
+  	CALL delete_activities_for_project(OLD.id);
+  END
+/
+delimiter ;

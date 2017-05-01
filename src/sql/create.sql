@@ -134,7 +134,7 @@ CREATE TABLE activity_feed_items (
 
   PRIMARY KEY (id),
   FOREIGN KEY (studentId) REFERENCES students(id),
-  FOREIGN KEY (activityId) REFERENCES activities(id)
+  FOREIGN KEY (activityId) REFERENCES activities(id) ON DELETE CASCADE
 );
 
 CREATE TABLE enrolled_activities (
@@ -144,7 +144,7 @@ CREATE TABLE enrolled_activities (
 
   PRIMARY KEY (id),
   UNIQUE (ID),
-  FOREIGN KEY (id) REFERENCES activities(id),
+  FOREIGN KEY (id) REFERENCES activities(id) ON DELETE CASCADE,
   FOREIGN KEY (courseId) REFERENCES courses(id),
   FOREIGN KEY (studentId) REFERENCES students(id)
 );
@@ -155,8 +155,8 @@ CREATE TABLE project_added_activities (
 
   PRIMARY KEY (id),
   UNIQUE (ID),
-  FOREIGN KEY (id) REFERENCES activities(id),
-  FOREIGN KEY (projectId) REFERENCES projects(id)
+  FOREIGN KEY (id) REFERENCES activities(id) ON DELETE CASCADE,
+  FOREIGN KEY (projectId) REFERENCES projects(id) ON DELETE CASCADE
 );
 
 CREATE TABLE project_updated_activities (
@@ -165,8 +165,8 @@ CREATE TABLE project_updated_activities (
 
   PRIMARY KEY (id),
   UNIQUE (ID),
-  FOREIGN KEY (id) REFERENCES activities(id),
-  FOREIGN KEY (projectId) REFERENCES projects(id)
+  FOREIGN KEY (id) REFERENCES activities(id) ON DELETE CASCADE,
+  FOREIGN KEY (projectId) REFERENCES projects(id) ON DELETE CASCADE
 );
 
 CREATE TABLE comment_activities (
@@ -175,6 +175,6 @@ CREATE TABLE comment_activities (
 
   PRIMARY KEY (id),
   UNIQUE (ID),
-  FOREIGN KEY (id) REFERENCES activities(id),
+  FOREIGN KEY (id) REFERENCES activities(id) ON DELETE CASCADE,
   FOREIGN KEY (commentId) REFERENCES comments(id)
 );

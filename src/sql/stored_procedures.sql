@@ -1,5 +1,4 @@
 DROP PROCEDURE IF EXISTS user_activity_feed;
-
 DELIMITER //
 CREATE PROCEDURE user_activity_feed
 (IN user_id INTEGER(10))
@@ -41,5 +40,24 @@ BEGIN
     order by created_at desc
 
     limit 5;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS delete_activities_for_project;
+DELIMITER //
+CREATE PROCEDURE delete_activities_for_project
+(IN project_id INTEGER(10))
+BEGIN
+    delete from activities where id in
+    (
+        select id from project_added_activities
+        where projectId = project_id
+
+        union all
+
+        select id from project_updated_activities
+        where projectId = project_id
+    );
 END //
 DELIMITER ;

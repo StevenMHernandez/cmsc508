@@ -41,13 +41,19 @@
         <article class="small-width">
             <h2 th:text="${project.name}"/>
 
+            <p th:text="${project.description}"/>
+
             <div th:switch="${user.id}">
                 <p th:case="${project.studentId}">
-                    <a th:href="@{'/projects/' + ${project.id} + '/edit'}">Edit</a>
+                <hr/>
+                <a th:href="@{'/projects/' + ${project.id} + '/edit'}">Edit</a>
+                <form th:action="@{'/projects/' + ${project.id}}" method="POST">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <button type="submit">Delete</button>
+                </form>
                 </p>
             </div>
-
-            <p th:text="${project.description}"/>
         </article>
     </div>
 </section>

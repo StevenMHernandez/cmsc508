@@ -61,4 +61,10 @@ public class ProjectController extends BaseController {
         new ProjectsRepository(this.jdbcTemplate).update(project);
         return "redirect:/student/" + this.getStudent().getId() + "/projects";
     }
+
+    @RequestMapping(value="/projects/{project_id}", method=RequestMethod.DELETE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String delete(@PathVariable Integer project_id, Model model, String name, String description) {
+        new ProjectsRepository(this.jdbcTemplate).delete(project_id, this.getStudent().getId());
+        return "redirect:/student/" + this.getStudent().getId() + "/projects";
+    }
 }
