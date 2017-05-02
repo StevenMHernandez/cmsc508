@@ -42,7 +42,7 @@ public class CourseController extends BaseController {
         model.addAttribute("students", students);
 
         Course course = new CoursesRepository(this.jdbcTemplate).find(course_id);
-        model.addAttribute("courseNumber", course);
+        model.addAttribute("course", course);
 
         List<Project> projects = new ProjectsRepository(this.jdbcTemplate).findAllForCourse(course_id);
         model.addAttribute("projects", projects);
