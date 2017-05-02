@@ -1,7 +1,10 @@
 package com.cmsc508.controller;
 
 import com.cmsc508.model.Course;
+import com.cmsc508.model.Project;
+import com.cmsc508.model.Student;
 import com.cmsc508.repository.CoursesRepository;
+import com.cmsc508.repository.ProjectsRepository;
 import com.cmsc508.repository.StudentsRepository;
 
 import org.springframework.http.MediaType;
@@ -34,9 +37,22 @@ public class CourseController extends BaseController {
 
     @RequestMapping(value="/courses/{course_id}", method=RequestMethod.GET)
     public String show(@PathVariable Integer course_id, Model model) {
-        // load course from database
-        // get all students in the course
-        // get all projects from students in the course
+
+        List<Student> students = new StudentsRepository(this.jdbcTemplate).findAllForCourse(course_id);
+        model.addAttribute("students", students);
+
+        Course course = new CoursesRepository(this.jdbcTemplate).find(course_id);
+        model.addAttribute("courseNumber", course);
+
+        List<Project> projects = new ProjectsRepository(this.jdbcTemplate).findAllForCourse(course_id);
+        model.addAttribute("projects", projects);
+
         return "courses/show";
+    }
+
+    @RequestMapping(value="/courses/{course_id}", method=RequestMethod.DELETE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String delete(@PathVariable Integer course_id) {
+        new CoursesRepository(this.jdbcTemplate).delete(this.getStudent().getId(), course_id);
+        return "redirect:/courses/add";
     }
 }

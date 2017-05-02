@@ -29,4 +29,11 @@ public class StudentsRepository extends BaseRepository {
     public void addCourse(Long studentId, Integer courseId) {
         jdbcTemplate.update("insert into course_student (studentId, courseId) VALUES (?,?)", new Object[]{studentId, courseId});
     }
+
+    public List<Student> findAllForCourse(Integer courseID) {
+        return jdbcTemplate.query("SELECT * \n" +
+                "FROM students, course_student  \n" +
+                "WHERE students.id = course_student.studentId\n" +
+                "AND course_student.courseId = ?", new StudentRowMapper(), new Object[]{courseID});
+    }
 }

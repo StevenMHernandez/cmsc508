@@ -41,4 +41,11 @@ public class ProjectsRepository extends BaseRepository {
     public void delete(Integer project_id, long student_id) {
         jdbcTemplate.update("DELETE FROM projects WHERE id = ? AND studentId = ?", new Object[]{project_id, student_id});
     }
+
+    public List<Project> findAllForCourse(Integer course_id) {
+        return jdbcTemplate.query("SELECT * \n" +
+                "FROM projects, course_student  \n" +
+                "WHERE projects.studentId = course_student.studentId\n" +
+                "AND course_student.courseId = ?", new ProjectRowMapper(), new Object[]{course_id});
+    }
 }
