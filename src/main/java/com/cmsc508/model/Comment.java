@@ -13,6 +13,15 @@ public class Comment {
     private String body;
     private Date createdAt;
     private Date updatedAt;
+    private String studentName;
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
 
     public long getId() {
         return id;

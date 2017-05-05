@@ -14,7 +14,7 @@ CREATE TRIGGER add_comment_activity AFTER INSERT ON comments
 		WHERE c.targetId = NEW.targetId
   		AND c.studentId != NEW.studentId
     );
-    IF (NEW.type = "project") THEN
+    IF (NEW.type = 1) THEN
     	-- `broadcast` to project owner
     	INSERT INTO activity_feed_items (studentId, activityId) (
     		SELECT studentId, LAST_INSERT_ID() FROM projects p
