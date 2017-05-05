@@ -1,8 +1,5 @@
 package com.cmsc508.controller;
 
-import com.cmsc508.model.Student;
-import com.cmsc508.repository.StudentsRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -18,12 +15,7 @@ public class StudentController {
 
     @RequestMapping(value="/students/{student_id}", method=RequestMethod.GET)
     public String show(@PathVariable Integer student_id, Model model) {
-        // load student with projects from database
-        Student student = new StudentsRepository(this.jdbcTemplate).find(student_id);
-
-        model.addAttribute("student", student);
-
-        return "students/show";
+        return "redirect:/student/" + student_id + "/projects";
     }
 
     @RequestMapping(value="/students/{student_id}/comment", method=RequestMethod.POST)
