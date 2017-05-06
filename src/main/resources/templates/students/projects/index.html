@@ -28,7 +28,8 @@
         <div class="col-5 last text-right">
             <ul class="inline-list">
                 <form action="/logout" method="POST">
-                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <input type="hidden" th:name="${_csrf.parameterName}"
+                           th:value="${_csrf.token}"/>
                     <button type="submit">Logout</button>
                 </form>
             </ul>
@@ -49,15 +50,21 @@
 
         <div class="col-4 first" th:each="project : ${projects}">
             <article class="small-width">
-                <h3><a th:href="'/student/' + ${project.studentId} + '/projects/' + ${project.id}" th:text="${project.name}">Example Project</a></h3>
+                <h3><a th:href="'/student/' + ${project.studentId} + '/projects/' + ${project.id}"
+                       th:text="${project.name}">Example Project</a></h3>
                 <p th:text="${project.description}"></p>
             </article>
         </div>
 
-        <div class="col-4 last">
-            <article class="small-width text-center">
-                <a href="/projects/create" class="button">Add Project</a>
-            </article>
+
+        <div th:switch="${user.id}">
+            <div th:case="${student.id}">
+                <div class="col-4 last">
+                    <article class="small-width text-center">
+                        <a href="/projects/create" class="button">Add Project</a>
+                    </article>
+                </div>
+            </div>
         </div>
     </div>
 </section>

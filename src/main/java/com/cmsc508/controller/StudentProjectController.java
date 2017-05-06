@@ -2,8 +2,10 @@ package com.cmsc508.controller;
 
 import com.cmsc508.model.Comment;
 import com.cmsc508.model.Project;
+import com.cmsc508.model.Student;
 import com.cmsc508.repository.CommentsRepository;
 import com.cmsc508.repository.ProjectsRepository;
+import com.cmsc508.repository.StudentsRepository;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,11 @@ import java.util.List;
 public class StudentProjectController extends BaseController {
     @RequestMapping(value="/student/{student_id}/projects", method=RequestMethod.GET)
     public String index(@PathVariable Integer student_id, Model model) {
+        Student student = new StudentsRepository(this.jdbcTemplate).find(student_id);
         List<Project> projects = new ProjectsRepository(this.jdbcTemplate).findAllForStudent(student_id);
 
-        model.addAttribute("student", this.getStudent());
+        model.addAttribute("user", this.getStudent());
+        model.addAttribute("student", student);
         model.addAttribute("projects", projects);
 
         return "students/projects/index";
