@@ -8,6 +8,8 @@ public class Star {
 
     private long studentId;
     private long projectId;
+    private String projectName;
+    private long projectStudentId;
 
     public long getProjectId() {
         return projectId;
@@ -25,5 +27,19 @@ public class Star {
         this.projectId = projectId;
     }
 
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
+    public String getProjectName() {
+        return this.projectName;
+    }
+
+    public long getProjectStudentId() {
+        return projectStudentId;
+    }
+
+    public void setProjectStudentId(long projectStudentId) {
+        this.projectStudentId = projectStudentId;
+    }
 }

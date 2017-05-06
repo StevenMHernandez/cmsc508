@@ -74,10 +74,10 @@
         <h2><span th:text="${student.name}"></span>'s Starred Projects</h2>
 
 
-
         <div class="col-4 first" th:each="star : ${stars}">
             <article class="small-width">
-                <a th:text="${star.studentId}">Example Project</a>
+                <a th:href="'/student/' + ${star.projectStudentId} + '/projects/' + ${star.projectId}"
+                   th:text="${star.projectName}">Example Project</a>
             </article>
         </div>
 

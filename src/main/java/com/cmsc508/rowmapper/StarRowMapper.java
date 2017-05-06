@@ -14,8 +14,10 @@ public class StarRowMapper implements RowMapper<Star> {
         @Override
         public Star mapRow(ResultSet rs, int rowNum) throws SQLException {
             Star star = new Star();
-            star.setProjectId(rs.getLong("studentId"));
-            star.setStudentId(rs.getInt("projectId"));
+            star.setProjectId(rs.getLong("projectId"));
+            star.setStudentId(rs.getInt("studentId"));
+            star.setProjectName(rs.getString("projectName"));
+            star.setProjectStudentId(rs.getInt("projectStudentId"));
             return star;
         }
 }
