@@ -76,6 +76,9 @@
                     </div>
                 </form>
 
+                <form th:action="@{'/student/' + ${project.studentId} + '/projects/' + ${project.id} + '/star'}" method="POST">
+                    <button type="submit">Star</button></form>
+
                 <div class="first" th:each="comment : ${comments}">
                     <hr/>
                     <p th:text="${comment.body}"></p>
