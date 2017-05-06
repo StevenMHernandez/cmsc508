@@ -1,8 +1,10 @@
 package com.cmsc508.controller;
 
 import com.cmsc508.model.Project;
+import com.cmsc508.model.Star;
 import com.cmsc508.repository.ProjectsRepository;
 
+import com.cmsc508.repository.StarRepository;
 import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;

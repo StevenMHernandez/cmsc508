@@ -24,10 +24,13 @@ public class StudentProjectController extends BaseController {
     public String index(@PathVariable Integer student_id, Model model) {
         Student student = new StudentsRepository(this.jdbcTemplate).find(student_id);
         List<Project> projects = new ProjectsRepository(this.jdbcTemplate).findAllForStudent(student_id);
+        List<Star> stars = new StarRepository(this.jdbcTemplate).getStarred(student_id);
+
 
         model.addAttribute("user", this.getStudent());
         model.addAttribute("student", student);
         model.addAttribute("projects", projects);
+        model.addAttribute("stars", stars);
 
         return "students/projects/index";
     }
@@ -53,9 +56,7 @@ public class StudentProjectController extends BaseController {
         // get project data with comments and stars
         Project project = new ProjectsRepository(this.jdbcTemplate).get(project_id, student_id);
         List<Comment> comments = new CommentsRepository(this.jdbcTemplate).findForProject(project_id);
-        List<Star> stars = new StarRepository(this.jdbcTemplate).getStarred(student_id);
 
-        model.addAttribute("stars", stars);
         model.addAttribute("project", project);
         model.addAttribute("comments", comments);
         model.addAttribute("user", this.getStudent());
