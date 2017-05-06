@@ -1,6 +1,7 @@
 package com.cmsc508.repository;
 
 import com.cmsc508.model.Project;
+import com.cmsc508.model.Student;
 import com.cmsc508.rowmapper.ProjectRowMapper;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,6 +24,7 @@ public class ProjectsRepository extends BaseRepository {
     public void insert(Project project) {
         jdbcTemplate.update("insert into projects (name, description, studentId) VALUES (?,?,?)", new Object[]{project.getName(), project.getDescription(), project.getStudentId()});
     }
+
 
     public void update(Project project) {
         jdbcTemplate.update("update projects SET name=?, description=? WHERE id = ? AND studentId = ?", new Object[]{project.getName(), project.getDescription(), project.getId(), project.getStudentId()});
