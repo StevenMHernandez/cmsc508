@@ -68,5 +68,23 @@
         </div>
     </div>
 </section>
+
+<section class="container">
+    <div class="wrap">
+        <h2><span th:text="${student.name}"></span>'s Starred Projects</h2>
+
+        <div th:switch="${user.id}">
+            <div th:case="${student.id}">
+        <div class="col-4 first" th:each="star : ${stars}">
+            <article class="small-width">
+                <h3><a th:text="${project.name}">Example Project</a></h3>
+                <p th:text="${project.description}"></p>
+            </article>
+        </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 </body>
 </html>
