@@ -84,7 +84,7 @@ CREATE TABLE stars (
 
   PRIMARY KEY (studentId, projectId),
   FOREIGN KEY (studentId) REFERENCES students(id),
-  FOREIGN KEY (projectId) REFERENCES projects(id)
+  FOREIGN KEY (projectId) REFERENCES projects(id) ON DELETE CASCADE
 );
 
 CREATE TABLE comments (
