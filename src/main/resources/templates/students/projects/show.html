@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:text-decoration="http://www.w3.org/1999/xhtml">
 <head>
 
     <style>
@@ -133,7 +133,9 @@
                     <br/>
                 </div>
 
-                <article class="small-width col-6 last">
+                <hr/>
+
+                <article class="small-width col-1 second">
                     <form th:action="@{'/student/' + ${project.studentId} + '/projects/' + ${project.id} + '/star'}" method="POST">
                         <button class="buttonyellow" type="submit">Star</button></form>
                 </article>
