@@ -54,17 +54,17 @@
                     <span th:case="enrolled">
                         enrolled in one of your courses.
 
-                        <a th:href="'/courses/' + ${activity.targetId}">View the course</a>
+                        <button><a th:href="'/courses/' + ${activity.targetId}" style="text-decoration: none;">View the course</a></button>
                     </span>
                     <span th:case="project_added">
                         added a new project.
 
-                        <a th:href="'/student/' + ${activity.studentId} + '/projects/' + ${activity.targetId}">View the project</a>
+                        <button><a th:href="'/student/' + ${activity.studentId} + '/projects/' + ${activity.targetId}" style="text-decoration: none;">View the project</a></button>
                     </span>
                     <span th:case="project_updated">
                         updated one of their projects.
 
-                        <a th:href="'/student/' + ${activity.studentId} + '/projects/' + ${activity.targetId}">View the project</a>
+                        <button><a th:href="'/student/' + ${activity.studentId} + '/projects/' + ${activity.targetId}" style="text-decoration: none;">View the project</a></button>
                     </span>
                     <span th:case="comment">
                         left you a comment.

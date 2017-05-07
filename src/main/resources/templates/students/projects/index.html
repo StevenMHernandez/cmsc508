@@ -54,12 +54,16 @@
                        th:text="${project.name}">Example Project</a></h3>
                 <p th:text="${project.description}"></p>
             </article>
+            <br/>
+            <br/><br/>
+            <br/>
         </div>
+
 
 
         <div th:switch="${user.id}">
             <div th:case="${student.id}">
-                <div class="col-4 last">
+                <div class="col-25 last">
                     <article class="small-width text-center">
                         <a href="/projects/create" class="button">Add Project</a>
                     </article>

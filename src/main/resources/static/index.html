@@ -29,10 +29,14 @@
         </div>
         <div class="col-5 last text-right">
             <ul class="inline-list">
-                <li ng-show="!home.authenticated"><a href="/login">login</a></li>
+                <li ng-show="!home.authenticated">
+                <form action="/login" method="GET">
+                    <button type="submit">Login</button>
+                </form>
+                </li>
                 <li ng-show="home.authenticated">
                     <span ng-bind="home.user"></span>
-                    <a href="#" ng-click="home.logout()">logout</a>
+                    <button ><a ng-click="home.logout()">Logout</a></button>
                 </li>
             </ul>
         </div>
@@ -42,11 +46,7 @@
 <div class="font-color-alt container" id="homepage-hero">
     <div class="wrap text-center">
         <h1 class="big-boy">CMSC 508</h1>
-        <p class="big">Lorem ipsum.</p>
-        <p>
-            <a href="/login"
-               class="button-alt-light-big">Login</a>
-        </p>
+        <p class="big">Steven & Pulkit</p>
     </div>
 </div>
 
@@ -57,12 +57,11 @@
             <h2 class="text-center">CMSC 508</h2>
             <div>
                 <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed elit
-                    vulputate, mattis purus in, porta elit. Fusce vitae felis sem. Aliquam
-                    vestibulum vulputate mi, sit amet blandit odio feugiat id. Vivamus in finibus
-                    magna, sed porta massa. Duis pulvinar vitae ante ac convallis. Quisque pretium
-                    est a sem blandit, ac placerat ante hendrerit. Fusce a arcu ut tellus fermentum
-                    tincidunt.
+                    This is a platform for students to share interesting work they are working on and to find interesting work fellow
+                    classmates are working on. As students start a new semester they enter into new classes filled with new fellow students.
+                    Finding classmates working on similar projects or working in topics you are also interested in can take some time right at the
+                    beginning of the semester. Instead, if there was a way where each student could share their project
+                    experiences with classmates in an easier way, this problem could be solved a bit quicker.
                 </p>
             </div>
         </article>

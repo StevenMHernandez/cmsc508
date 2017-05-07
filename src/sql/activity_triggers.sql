@@ -1,7 +1,7 @@
 -- comment_activities
 DROP TRIGGER IF EXISTS add_comment_activity;
 delimiter /
-CREATE TRIGGER add_comment_activity AFTER INSERT ON comments
+  CREATE TRIGGER add_comment_activity AFTER INSERT ON comments
   FOR EACH ROW
   BEGIN
   	-- add an activity for this event
