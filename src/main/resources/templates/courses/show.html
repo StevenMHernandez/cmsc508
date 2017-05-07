@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title th:text="${course_id}" />
+    <title>CMSC508</title>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width"/>
     <base href="/"/>
@@ -22,15 +22,16 @@
                 <li><a href="/">CMSC 508</a></li>
                 <li><a href="/projects">Projects</a></li>
                 <li><a href="/courses/add">Classes</a></li>
+                <li><a href="/activity-feed">Your Feed</a></li>
             </ul>
         </div>
         <div class="col-5 last text-right">
             <ul class="inline-list">
-                <li ng-show="!home.authenticated"><a href="/login">login</a></li>
-                <li ng-show="home.authenticated">
-                    <span ng-bind="home.user"></span>
-                    <a href="#" ng-click="home.logout()">logout</a>
-                </li>
+                <form action="/logout" method="POST">
+                    <input type="hidden" th:name="${_csrf.parameterName}"
+                           th:value="${_csrf.token}"/>
+                    <button type="submit">Logout</button>
+                </form>
             </ul>
         </div>
     </div>
